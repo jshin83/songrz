@@ -42,5 +42,4 @@ public class SongrApplicationTests {
 		assertEquals("Should reverse phrase to 'palindrome. a not am I",
 				"palindrome. a not am I",
 				classToTest.reverseStringParam("I am not a palindrome."));	}
-
 }
