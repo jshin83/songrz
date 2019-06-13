@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.util.concurrent.TimeUnit;
 
 @Entity
@@ -20,16 +21,18 @@ public class Album {
 
     public Album() {}
 
-    public Album(String title, String artist, int songCount, long seconds, String imageUrl) {
+    public Album(String title, String artist, int songCount, long minutes, String imageUrl) {
+
         this.title = title;
         this.artist = artist;
         this.songCount = songCount;
-        this.seconds = turnMinutesToSeconds(seconds);
+        this.seconds = minutes;
         this.imageUrl = imageUrl;
     }
     //this doesn't work
-    private long turnMinutesToSeconds(long time) {
-        return TimeUnit.MINUTES.toSeconds(time);
+    private void turnMinutesToSeconds(long minutes) {
+
+        setSeconds(minutes * 60);
     }
 
     public String getTitle() {
@@ -45,7 +48,7 @@ public class Album {
     }
 
     public long getSeconds() {
-        return seconds;
+        return seconds * 60;
     }
 
     public String getImageUrl() {
