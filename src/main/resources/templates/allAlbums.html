@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hello! And other greetings</title>
+    <title>Albums</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
@@ -17,6 +17,7 @@
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
 <h1>All the Albums</h1>
+<span th:text="${#lists.size(albums)} != 0? '': 'You do not have any stored album information.'"></span>
 <ul>
     <li th:each="album : ${albums}">
         <img th:src="${album.imageUrl}" height="40px" width="40px">
