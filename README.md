@@ -8,3 +8,6 @@ Spring application with routes.
    + /hello
    + /hello/stringToCapitalize
    +/reverse?sentence=stringToReverse
+4. Added class Album. Connects to DB and shows all albums,
+allows user to add to DB.
+   + /albums
