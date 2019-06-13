@@ -27,7 +27,7 @@ public class Album {
         this.seconds = turnMinutesToSeconds(seconds);
         this.imageUrl = imageUrl;
     }
-
+    //this doesn't work
     private long turnMinutesToSeconds(long time) {
         return TimeUnit.MINUTES.toSeconds(time);
     }

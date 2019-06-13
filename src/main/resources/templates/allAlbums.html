@@ -21,7 +21,7 @@
     <li th:each="album : ${albums}">
         <span th:text="${album.title}"></span>
         (by <span th:text="${album.artist}"></span>) <img th:src="${album.imageUrl}" height="50px" width="50px">
-        <span th:text="${album.length}"></span>
+        Length: <span th:text="${album.seconds}"> seconds</span>
     </li>
 </ul>
 </body>
