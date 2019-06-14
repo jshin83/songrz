@@ -11,7 +11,7 @@
     <p>Album Title: <input type="text" th:field="*{title}" required /></p>
     <p>Artist: <input type="text" th:field="*{artist}" required /></p>
     <p>Song Count: <input type="number" th:field="*{songCount}" required min="1"/></p>
-    <p>Album Length: <input type="number" th:field="*{seconds}" placeholder="min" min="1" required /></p>
+    <p>Album Length: <input type="number" th:field="*{length}" placeholder="min" min="1" required /></p>
     <p>Image Url: <input type="text" th:field="*{imageUrl}" required /></p>
 
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
@@ -23,7 +23,8 @@
         <img th:src="${album.imageUrl}" height="40px" width="40px">
         <span th:text="${album.title}"></span>
         (by <span th:text="${album.artist}"></span>)
-        Length: <span th:text="${album.seconds}"></span> seconds
+        Length: <span th:text="${album.length}"></span> length
+        <a th:href="@{/oneAlbum/} + ${album.id}">See All Songs</a>
     </li>
 </ul>
 </body>

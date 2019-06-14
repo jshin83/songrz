@@ -1,11 +1,7 @@
 package edu.jenshin831.lab.songr;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import java.util.concurrent.TimeUnit;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -16,8 +12,11 @@ public class Album {
     String title;
     String artist;
     int songCount;
-    long seconds;
+    long length;
     String imageUrl;
+
+    @OneToMany(mappedBy = "album")
+    List<Song> songs;
 
     public Album() {}
 
@@ -26,13 +25,8 @@ public class Album {
         this.title = title;
         this.artist = artist;
         this.songCount = songCount;
-        this.seconds = minutes;
+        this.length = minutes;
         this.imageUrl = imageUrl;
-    }
-    //this doesn't work
-    private void turnMinutesToSeconds(long minutes) {
-
-        setSeconds(minutes * 60);
     }
 
     public String getTitle() {
@@ -47,8 +41,8 @@ public class Album {
         return songCount;
     }
 
-    public long getSeconds() {
-        return seconds * 60;
+    public long getLength() {
+        return length * 60;
     }
 
     public String getImageUrl() {
@@ -67,11 +61,19 @@ public class Album {
         this.songCount = songCount;
     }
 
-    public void setSeconds(long seconds) {
-        this.seconds = seconds;
+    public void setLength(long length) {
+        this.length = length;
     }
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public long getId() {
+        return id;
     }
 }
