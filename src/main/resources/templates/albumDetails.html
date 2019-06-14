@@ -17,15 +17,13 @@
         Length: <span th:text="${album.length}"></span> length
     </li>
 </ul>
-<!--<form action="#" th:action="@{/albums}" th:object="${newAlbum}" method="post">-->
-<!--<p>Album Title: <input type="text" th:field="*{title}" required /></p>-->
-<!--<p>Artist: <input type="text" th:field="*{artist}" required /></p>-->
-<!--<p>Song Count: <input type="number" th:field="*{songCount}" required min="1"/></p>-->
-<!--<p>Album Length: <input type="number" th:field="*{length}" placeholder="min" min="1" required /></p>-->
-<!--<p>Image Url: <input type="text" th:field="*{imageUrl}" required /></p>-->
+<form action="#" th:action="@{/oneAlbum/} + ${album.id}" th:object="${newSong}" method="post">
+<p>Song Title: <input type="text" th:field="*{title}" required /></p>
+<p>Track Number: <input type="number" th:field="*{trackNumber}" required /></p>
+<p>Length: <input type="number" th:field="*{length}" required min="1"/></p>
 
-<!--<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>-->
-<!--</form>-->
+<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
 
 </body>
 </html>

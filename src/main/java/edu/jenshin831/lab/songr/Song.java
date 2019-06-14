@@ -11,15 +11,16 @@ public class Song {
     long length;
     int trackNumber;
 
-    @ManyToOne
+    @ManyToOne //(cascade = CascadeType.ALL)
     Album album;
 
     public Song() {}
 
-    public Song(String title, long length, int trackNumber) {
+    public Song(String title, long length, int trackNumber, Album album) {
         this.title = title;
         this.length = length;
         this.trackNumber = trackNumber;
+        this.album = album;
     }
 
     public long getId() {

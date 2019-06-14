@@ -38,11 +38,22 @@ public class AlbumController {
         //get the album deets
         Album album = albumRepository.findById(id).get();
         m.addAttribute(album);
+
         //get songs from the album
         Iterable<Song> allSongs = album.getSongs();
         m.addAttribute("songs", allSongs);
+
+        //add new song so if form filled out, it exists
+        m.addAttribute("newSong", new Song());
         return "/albumDetails";
     }
 
+    @PostMapping("/oneAlbum/{id}")
+    public String songSubmit(@PathVariable long id, @ModelAttribute Song newSong) {
+        Album album = albumRepository.findById(id).get();
+
+        songRepository.save(new Song(newSong.title, newSong.length, newSong.trackNumber, album));
+        return "redirect:/oneAlbum/{id}";
+    }
 
 }
