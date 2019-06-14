@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collection;
@@ -14,6 +15,8 @@ public class AlbumController {
 
     @Autowired
     AlbumRepository albumRepository;
+    @Autowired
+    SongRepository songRepository;
 
     @GetMapping("/albums")
     public String getAllAlbums(Model m) {
@@ -29,4 +32,17 @@ public class AlbumController {
         albumRepository.save(newAlbum);
         return "redirect:/albums";
     }
+
+    @GetMapping("/oneAlbum/{id}")
+    public String displayAlbumDetails(@PathVariable long id, Model m) {
+        //get the album deets
+        Album album = albumRepository.findById(id).get();
+        m.addAttribute(album);
+        //get songs from the album
+        Iterable<Song> allSongs = album.getSongs();
+        m.addAttribute("songs", allSongs);
+        return "/albumDetails";
+    }
+
+
 }
