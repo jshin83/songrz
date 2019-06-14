@@ -8,6 +8,11 @@ Spring application with routes.
    + /hello
    + /hello/stringToCapitalize
    +/reverse?sentence=stringToReverse
-4. Added class Album. Connects to DB and shows all albums,
+
+## Album
+1. Added class Album. Connects to DB and shows all albums,
 allows user to add to DB.
    + /albums
+   + /oneAlbum/{id}
+2. Added class Song. Has foreign key to Album.
+    Able to add a song to the album.
